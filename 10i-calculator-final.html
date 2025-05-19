@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+  <style>
+    body {
+      background-color: orange;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .calculator-button {
+      padding: 10px 15px;
+      border-radius: 50%;
+      margin: 1px;
+      border: none;
+      cursor: pointer;
+      background-color: rgb(99, 99, 241);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    .calculator-button:active {
+      background-color: black;
+      color: white;
+    }
+
+    .copyrights {
+      position: fixed;
+      bottom: 5px;
+      right: 5px;
+      background-color: rgb(195, 194, 194);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: small;
+      font-weight: 100;
+      padding: 4px 8px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <br />
+
+  <p class="js-result-calculator"></p>
+
+  <p>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('1')">1</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('2')">2</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('3')">3</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator(' + ')">+</button>
+  </p>
+
+  <p>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('4')">4</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('5')">5</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('6')">6</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator(' - ')">-</button>
+  </p>
+
+  <p>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('7')">7</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('8')">8</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('9')">9</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator(' * ')">x</button>
+  </p>
+
+  <p>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('0')">0</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator('.')">.</button>
+    <button class="js-calculator-button calculator-button" onclick="evalCalculator()">=</button>
+    <button class="js-calculator-button calculator-button" onclick="updateCalculator(' / ')">:</button>
+  </p>
+
+  <p>
+    <button class="js-calculator-button calculator-button" onclick="clearCalculator()">Clear</button>
+  </p>
+
+  <div class="copyrights">
+    &#169;2025 f-gunawans
+  </div>
+  
+
+  <script>
+    let resultCalculator = '';
+
+    function updateCalculator(inputClick, inputElement) {
+      resultCalculator += inputClick;
+      //console.log(resultCalculator);
+
+      document.querySelector('.js-result-calculator').innerHTML =  resultCalculator;
+    }
+
+    function evalCalculator() {
+      resultCalculator = eval(resultCalculator) * 100;
+
+      let finalResultCalculator = resultCalculator/100;
+
+      document.querySelector('.js-result-calculator').innerHTML = finalResultCalculator;
+    }
+
+    function clearCalculator() {
+      resultCalculator = '';
+
+      document.querySelector('.js-result-calculator').innerHTML = ' -- clear --';
+    }
+  </script>
+</body>
+</html>
